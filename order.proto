@@ -1,0 +1,30 @@
+syntax = "proto3";
+import public "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+package Order;
+
+// The greeting service definition.
+service OrderGRpc {
+  // Sends a greeting
+  rpc GetById (OrderRequest) returns (OrderResult);
+
+  rpc GetAll(google.protobuf.Empty) returns (OrderResults);
+}
+
+// The request message containing the user's name.
+message OrderRequest {
+  int64 orderId = 1;
+}
+
+// The response message containing the greetings.
+message OrderResult {
+  string Name = 1;
+  google.protobuf.Timestamp CreateTime = 2;
+  double Price = 3;
+  int64 Id=4;
+}
+
+message OrderResults {
+  repeated OrderResponse results = 1;
+}
