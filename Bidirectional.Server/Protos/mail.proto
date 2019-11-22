@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package mail;
+
+service Mailer{
+    rpc MailBox(stream ForwardMailMessage) returns(stream MailBoxMessage);
+}
+
+message ForwardMailMessage{
+}
+
+message MailBoxMessage{
+	int32 new=1;
+	int32 forwarded=2;
+	Reason reason=3;
+}
+
+enum Reason{
+	Received=0;
+	Forwarded=1;
+}
