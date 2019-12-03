@@ -1,0 +1,21 @@
+﻿http://localhost:8500/v1/agent/service/register 
+
+method put
+body json
+
+{
+	"ID": "7112175a-a2d8-4b36-b5d3-7e16fa9cda41",
+	"Name": "grpctest",
+	"Tags": ["xc/grpc/test"],
+	"Port": 5000,
+	"Address": "localhost",
+	"EnableTagOverride": false,
+	"Checks": [{
+		"Interval": "10s",
+		"Timeout": "10s",
+		"TLSSkipVerify": false,
+		"DeregisterCriticalServiceAfter": "5s",
+		"GRPC": "127.0.0.1:5000",
+		"GRPCUseTLS": false
+	}]
+}
