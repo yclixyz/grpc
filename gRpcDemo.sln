@@ -73,9 +73,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bidirectional.Client", "Bid
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "12.Consul", "12.Consul", "{79AC5B5C-0D43-4058-9FEB-CE6F7FABA13C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consul.Server", "Consul.Server\Consul.Server.csproj", "{0065636B-8F08-436D-8F00-B4F00F81DB17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consul.Server", "Consul.Server\Consul.Server.csproj", "{0065636B-8F08-436D-8F00-B4F00F81DB17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consul.Client", "Consul.Client\Consul.Client.csproj", "{5E05819E-E768-409C-BDB0-4218A14FE61A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consul.Client", "Consul.Client\Consul.Client.csproj", "{5E05819E-E768-409C-BDB0-4218A14FE61A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

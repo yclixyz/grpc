@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -16,6 +17,8 @@ namespace WithHttp.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+
             services.AddGrpc();
         }
 
@@ -31,11 +34,28 @@ namespace WithHttp.Server
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
+
                 endpoints.MapGrpcService<GreeterService>();
 
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response.WriteAsync("Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
+                });
+
+                endpoints.MapGet("/_proto/", async ctx =>
+                {
+                    ctx.Response.ContentType = "text/plain";
+                    using var fs = new FileStream(Path.Combine(env.ContentRootPath, "Protos", "greet.proto"), FileMode.Open, FileAccess.Read);
+                    using var sr = new StreamReader(fs);
+                    while (!sr.EndOfStream)
+                    {
+                        var line = await sr.ReadLineAsync();
+                        if (line != "/* >>" || line != "<< */")
+                        {
+                            await ctx.Response.WriteAsync(line);
+                        }
+                    }
                 });
             });
         }
