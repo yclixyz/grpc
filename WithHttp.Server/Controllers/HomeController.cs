@@ -13,7 +13,7 @@ namespace WithHttp.Server.Controllers
     {
         public IActionResult Get()
         {
-            return Ok("ok");
+            return Content("ok");
         }
     }
 }

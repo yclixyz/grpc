@@ -30,7 +30,7 @@ namespace WithHttp.Server
                             listenOptions.Protocols = HttpProtocols.Http2;
                         });
 
-                        options.Listen(IPAddress.Any, 80, listenOptions =>
+                        options.Listen(IPAddress.Any, 5002, listenOptions =>
                         {
                             listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
                         });
